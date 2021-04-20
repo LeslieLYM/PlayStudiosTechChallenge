@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PickProcessor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] SO_PlayerStat playerStatSO;
 
-    // Update is called once per frame
-    void Update()
+    //Assess if there are enough tokens
+    public void EvaluatePickUse(int i)
     {
-        
+        if (playerStatSO.HasEnoughTokens(i))
+        {
+            playerStatSO.UsePicks(i);
+            return;
+        }
+        print("You don't have enough tokens.");
     }
 }

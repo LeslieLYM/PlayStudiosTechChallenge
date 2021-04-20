@@ -5,8 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game Statistic/Player Statistic", fileName = "PlayerStatistic")]
 public class SO_PlayerStat : ScriptableObject
 {
+    [Header("Setup")]
+    public int maxTokens;
+
+    [Space]
+    [Header("Player's info")]
     public int totalPoints;
-    public int totalPicks;
+    public int totalTokens;
 
     public void StoreNewPoints(int pt)
     {
@@ -15,11 +20,16 @@ public class SO_PlayerStat : ScriptableObject
 
     public void UsePicks(int i)
     {
-        if (totalPicks - i < 0)
+        if (totalTokens - i < 0)
         {
             Debug.LogError("Total pick will drop below zero. Current pick use is skipped but check the pick processing method.");
             return;
         }
-        totalPicks -= i;
+        totalTokens -= i;
+    }
+
+    public bool HasEnoughTokens(int i)
+    {
+        return totalTokens >= i;
     }
 }
