@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Slot : MonoBehaviour
 {
     [SerializeField] SO_CurrentToken currentToken;
     [SerializeField] GameObject prizeGameObject;
+    [SerializeField] TextMeshProUGUI prizeText;
 
     [Space]
     [SerializeField] int id;
@@ -18,14 +20,13 @@ public class Slot : MonoBehaviour
         {
             currentToken.tokenPanelGameObject.SetActive(true);
             isRevealed = true;
-        }
-        
+        }        
     }
 
-    public void RevealPrize()
+    public void RevealPrize(int i)
     {
+        prizeText.text = i.ToString();
         prizeGameObject.SetActive(true);
-        print("you got prize!");
     }
 
     public void RegisterAsSelected()

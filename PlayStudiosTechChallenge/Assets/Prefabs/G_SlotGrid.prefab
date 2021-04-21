@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentToken: {fileID: 11400000, guid: 19a6bf41df0c5cd4c8ac70a76f149f58, type: 2}
+  prizeListSO: {fileID: 11400000, guid: 5432cb4590a9b9648b7ffadb1323134d, type: 2}
   eventTriggers: []
 --- !u!1001 &4837927715206081229
 PrefabInstance:

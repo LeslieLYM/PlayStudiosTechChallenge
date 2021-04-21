@@ -289,6 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 832546985}
   - component: {fileID: 832546986}
+  - component: {fileID: 832546987}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -323,6 +324,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStatSO: {fileID: 11400000, guid: 6d120f013301907429cb36993df89265, type: 2}
+--- !u!114 &832546987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832546984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f52c405751b7a844a696f8ac2b4e81a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prizeListSO: {fileID: 11400000, guid: 5432cb4590a9b9648b7ffadb1323134d, type: 2}
+  prizeTableSO: {fileID: 11400000, guid: e27513c7936404141b1f1f92daa74d1a, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

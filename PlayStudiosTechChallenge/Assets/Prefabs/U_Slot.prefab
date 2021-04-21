@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentToken: {fileID: 11400000, guid: 19a6bf41df0c5cd4c8ac70a76f149f58, type: 2}
   prizeGameObject: {fileID: 5501331868974969447}
+  prizeText: {fileID: 1547210328036347924}
   id: 0
 --- !u!1 &4780487598690274024
 GameObject:

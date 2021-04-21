@@ -6,11 +6,13 @@ using UnityEngine.EventSystems;
 public class SlotsGrid : MonoBehaviour
 {
     [SerializeField] SO_CurrentToken currentToken;
+    [SerializeField] SO_PrizeList prizeListSO;
     public EventTrigger[] eventTriggers;
 
     private void Awake()
     {
         eventTriggers = GetComponentsInChildren<EventTrigger>();
+        prizeListSO.numberOfPrizes = eventTriggers.Length;
 
         if (eventTriggers.Length > 0)
         {
@@ -34,6 +36,7 @@ public class SlotsGrid : MonoBehaviour
 
     public void RevealSelectedSlot()
     {
-        eventTriggers[currentToken.currentSelectedSlot].GetComponentInParent<Slot>().RevealPrize();
+        Slot s = eventTriggers[currentToken.currentSelectedSlot].GetComponentInParent<Slot>();
+        s.RevealPrize(prizeListSO.tier1List[currentToken.currentSelectedSlot]);
     }
 }
