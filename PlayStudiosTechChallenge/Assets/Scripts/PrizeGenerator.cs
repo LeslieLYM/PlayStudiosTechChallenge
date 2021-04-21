@@ -10,18 +10,30 @@ public class PrizeGenerator : MonoBehaviour
 
     void Start()
     {
-        int length = prizeTableSO.tier1Prizes.Length;
+        prizeListSO.tier1List = new int[prizeListSO.numberOfPrizes];
+        prizeListSO.tier2List = new int[prizeListSO.numberOfPrizes];
+        prizeListSO.tier3List = new int[prizeListSO.numberOfPrizes];
+
+        for (int i = 0; i < 3; i++)
+        {            
+            GeneratePrizes(i);
+        }
+    }
+
+    private void GeneratePrizes(int tier)
+    {
+        int length = prizeTableSO.GetLength(tier);
         int[] accumulativeFreqs = new int[length];
-        accumulativeFreqs[0] = prizeTableSO.tier1Frequencies[0];
+        int[] freq = prizeTableSO.GetFrequencies(tier);
+        accumulativeFreqs[0] = freq[0];
 
         for (int i = 1; i < length; i++)
         {
-            accumulativeFreqs[i] = accumulativeFreqs[i - 1] + prizeTableSO.tier1Frequencies[i];
+            accumulativeFreqs[i] = accumulativeFreqs[i - 1] + freq[i];
         }
-
-        prizeListSO.tier1List = new int[prizeListSO.numberOfPrizes];
+      
         for (int i = 0; i < prizeListSO.numberOfPrizes; i++)
-        {
+        {            
             int rand = Random.Range(0, accumulativeFreqs[length - 1]) + 1;
 
             int l = 0;
@@ -29,11 +41,9 @@ public class PrizeGenerator : MonoBehaviour
 
             int outIndex = -1;
 
-            print("rand " + rand);
             while (l < h)
             {
                 int mid = (l + h) / 2;
-                print("mid " + mid);
                 if (rand > accumulativeFreqs[mid])
                 {
                     l = mid + 1;
@@ -47,8 +57,7 @@ public class PrizeGenerator : MonoBehaviour
             {
                 outIndex = l;
             }
-            prizeListSO.tier1List[i] = prizeTableSO.tier1Prizes[outIndex];
+            prizeListSO.AssignPrizeToList(tier, i, prizeTableSO.GetPrizes(tier)[outIndex]);
         }
     }
-
 }

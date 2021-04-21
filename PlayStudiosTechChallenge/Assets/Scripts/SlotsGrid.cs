@@ -37,6 +37,7 @@ public class SlotsGrid : MonoBehaviour
     public void RevealSelectedSlot()
     {
         Slot s = eventTriggers[currentToken.currentSelectedSlot].GetComponentInParent<Slot>();
-        s.RevealPrize(prizeListSO.tier1List[currentToken.currentSelectedSlot]);
+        int p = prizeListSO.RequestPrize(currentToken.currentTokenUse - 1, currentToken.currentSelectedSlot);
+        s.RevealPrize(p);
     }
 }
