@@ -11,7 +11,7 @@ public class PickProcessor : MonoBehaviour
     {
         if (playerStatSO.HasEnoughTokens(i))
         {
-            playerStatSO.UsePicks(i);
+            //playerStatSO.UsePicks(i);
             return;
         }
         print("You don't have enough tokens.");

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc0543b35014414c843039d4b01f871, type: 3}
   m_Name: PlayerStatistic
   m_EditorClassIdentifier: 
+  maxTokens: 0
   totalPoints: 0
-  totalPicks: 0
+  totalTokens: 5

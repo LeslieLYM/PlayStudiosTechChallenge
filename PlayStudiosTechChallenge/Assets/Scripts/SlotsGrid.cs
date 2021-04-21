@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class SlotsGrid : MonoBehaviour
 {
+    [SerializeField] SO_PlayerStat playerStatSO;
     [SerializeField] SO_CurrentToken currentToken;
     [SerializeField] SO_PrizeList prizeListSO;
     public EventTrigger[] eventTriggers;
@@ -39,5 +40,6 @@ public class SlotsGrid : MonoBehaviour
         Slot s = eventTriggers[currentToken.currentSelectedSlot].GetComponentInParent<Slot>();
         int p = prizeListSO.RequestPrize(currentToken.currentTokenUse - 1, currentToken.currentSelectedSlot);
         s.RevealPrize(p);
+        playerStatSO.StoreNewPoints(p);
     }
 }

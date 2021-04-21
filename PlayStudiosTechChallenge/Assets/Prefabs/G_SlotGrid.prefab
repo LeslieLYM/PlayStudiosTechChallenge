@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4938375a3e8bfd4c8f9b8c284fca116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatSO: {fileID: 11400000, guid: 6d120f013301907429cb36993df89265, type: 2}
   currentToken: {fileID: 11400000, guid: 19a6bf41df0c5cd4c8ac70a76f149f58, type: 2}
   prizeListSO: {fileID: 11400000, guid: 5432cb4590a9b9648b7ffadb1323134d, type: 2}
   eventTriggers: []

@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78b39b8c6f5aca74a956ffba6df7111e, type: 3}
-  m_Name: CurrentTokenFlow
+  m_Script: {fileID: 11500000, guid: 3d158635cd009594381cda77128ce9a2, type: 3}
+  m_Name: PointPrize_100
   m_EditorClassIdentifier: 
-  playerStatSO: {fileID: 11400000, guid: 6d120f013301907429cb36993df89265, type: 2}
-  tokenPanelGameObject: {fileID: 0}
-  currentTokenUse: 3
-  currentSelectedSlot: 0
+  value: 100

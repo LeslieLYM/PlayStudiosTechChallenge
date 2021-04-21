@@ -8,28 +8,62 @@ public class SO_PlayerStat : ScriptableObject
     [Header("Setup")]
     public int maxTokens;
 
-    [Space]
+    
     [Header("Player's info")]
     public int totalPoints;
     public int totalTokens;
 
+    int potentialTokens = 0;
+
+    public delegate void ResourceChangeHandler();
+    public static ResourceChangeHandler OnTokenChanged;
+    public static ResourceChangeHandler OnPointsChanged;
+
+    [Space]
+    [Space]
+    [SerializeField] bool reset;
+
     public void StoreNewPoints(int pt)
     {
         totalPoints += pt;
+        OnPointsChanged?.Invoke();
     }
 
-    public void UsePicks(int i)
+    public void UsePicks()
     {
-        if (totalTokens - i < 0)
+        if (totalTokens < potentialTokens)
         {
             Debug.LogError("Total pick will drop below zero. Current pick use is skipped but check the pick processing method.");
             return;
         }
-        totalTokens -= i;
+        totalTokens -= potentialTokens;
+        OnTokenChanged?.Invoke();
+
+        potentialTokens = 0;
+    }
+
+    public void AssumeTokenUse(int i)
+    {
+        potentialTokens = i;
     }
 
     public bool HasEnoughTokens(int i)
     {
         return totalTokens >= i;
+    }
+
+
+
+
+
+    private void OnValidate()
+    {
+        if (reset)
+        {
+            totalPoints = 0;
+            totalTokens = 10;
+            potentialTokens = 0;
+            reset = false;
+        }
     }
 }
