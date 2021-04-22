@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PointsInfo : MonoBehaviour
+public class RewardInfo : MonoBehaviour
 {
     [SerializeField] SO_PlayerStat playerStatSO;
 
@@ -14,18 +14,8 @@ public class PointsInfo : MonoBehaviour
         pointsText.text = playerStatSO.roundTotalPoints.ToString();
     }
 
-    private void OnEnable()
-    {
-        SO_PlayerStat.OnPointsChanged += UpdatePointsText;
-    }
-
-    private void OnDisable()
-    {
-        SO_PlayerStat.OnPointsChanged -= UpdatePointsText;
-    }
-
     private void Start()
     {
-        pointsText.text = playerStatSO.roundTotalPoints.ToString();
+        UpdatePointsText();
     }
 }

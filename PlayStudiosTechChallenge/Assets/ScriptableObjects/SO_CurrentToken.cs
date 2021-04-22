@@ -13,8 +13,7 @@ public class SO_CurrentToken : ScriptableObject
     public void ChangeTokenUse(int i)
     {
         currentTokenUse += i;
-        int max = (playerStatSO.totalTokens >= currentTokenUse) ? 3 : 2;
-        currentTokenUse = Mathf.Clamp(currentTokenUse, 1, max);
+        currentTokenUse = Mathf.Clamp(currentTokenUse, 1, 3);
         playerStatSO.AssumeTokenUse(currentTokenUse);
     }
 

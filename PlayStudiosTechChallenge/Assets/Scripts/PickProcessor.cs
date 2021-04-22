@@ -7,13 +7,21 @@ public class PickProcessor : MonoBehaviour
     [SerializeField] SO_PlayerStat playerStatSO;
 
     //Assess if there are enough tokens
-    public void EvaluatePickUse(int i)
+    public void EvaluateGameEnd()
     {
-        if (playerStatSO.HasEnoughTokens(i))
+        if (playerStatSO.totalTokens <= 0)
         {
-            //playerStatSO.UsePicks(i);
-            return;
+            print("Game end.");
         }
-        print("You don't have enough tokens.");
+    }
+
+    private void OnEnable()
+    {
+        SO_PlayerStat.OnTokenChanged += EvaluateGameEnd;
+    }
+
+    private void OnDisable()
+    {
+        SO_PlayerStat.OnTokenChanged -= EvaluateGameEnd;
     }
 }

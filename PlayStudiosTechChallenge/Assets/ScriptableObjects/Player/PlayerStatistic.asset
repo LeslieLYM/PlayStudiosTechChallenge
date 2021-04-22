@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTokens: 0
   totalPoints: 0
-  totalTokens: 5
+  roundTotalPoints: 520
+  totalTokens: 10
+  reset: 0

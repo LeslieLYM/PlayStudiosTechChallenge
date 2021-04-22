@@ -8,9 +8,10 @@ public class SO_PlayerStat : ScriptableObject
     [Header("Setup")]
     public int maxTokens;
 
-    
+
     [Header("Player's info")]
     public int totalPoints;
+    public int roundTotalPoints;
     public int totalTokens;
 
     int potentialTokens = 0;
@@ -25,7 +26,7 @@ public class SO_PlayerStat : ScriptableObject
 
     public void StoreNewPoints(int pt)
     {
-        totalPoints += pt;
+        roundTotalPoints += pt;
         OnPointsChanged?.Invoke();
     }
 
@@ -60,7 +61,7 @@ public class SO_PlayerStat : ScriptableObject
     {
         if (reset)
         {
-            totalPoints = 0;
+            roundTotalPoints = 0;
             totalTokens = 10;
             potentialTokens = 0;
             reset = false;
