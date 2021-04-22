@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Can be deleted
 public class PickProcessor : MonoBehaviour
 {
     [SerializeField] SO_PlayerStat playerStatSO;

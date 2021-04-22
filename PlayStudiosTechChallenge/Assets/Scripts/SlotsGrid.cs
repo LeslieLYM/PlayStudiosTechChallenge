@@ -20,8 +20,19 @@ public class SlotsGrid : MonoBehaviour
             for (int i = 0; i < eventTriggers.Length; i++)
             {
                 eventTriggers[i].GetComponentInParent<Slot>().AssignId(i);
+                eventTriggers[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    public void OffInteractivity()
+    {
+        SetSlotsInteractivity(false);
+    }
+
+    public void OnInteractivity()
+    {
+        SetSlotsInteractivity(true);
     }
 
     public void SetSlotsInteractivity(bool active)
@@ -41,5 +52,19 @@ public class SlotsGrid : MonoBehaviour
         int p = prizeListSO.RequestPrize(currentToken.currentTokenUse - 1, currentToken.currentSelectedSlot);
         s.RevealPrize(p);
         playerStatSO.StoreNewPoints(p);
+    }
+
+    private void OnEnable()
+    {
+        BeginningCard.OnCardEnded += OnInteractivity;
+        SO_PlayerStat.OnTokenEmptied += OffInteractivity;
+        SummaryCard.OnCardEnded += OffInteractivity;
+    }
+
+    private void OnDisable()
+    {
+        BeginningCard.OnCardEnded -= OnInteractivity;
+        SO_PlayerStat.OnTokenEmptied -= OffInteractivity;
+        SummaryCard.OnCardEnded -= OffInteractivity;
     }
 }

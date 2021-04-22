@@ -26,6 +26,6 @@ public class TokenInfo : MonoBehaviour
 
     private void Start()
     {
-        tokenText.text = playerStatSO.totalTokens.ToString();
+        UpdateTokenText();
     }
 }

@@ -10,9 +10,12 @@ public class SO_CurrentToken : ScriptableObject
     public int currentTokenUse = 1;
     public int currentSelectedSlot = -1;
 
+    public delegate void currentChangeHandler();
+    public static currentChangeHandler OnTokenChanged;
+
     public void ChangeTokenUse(int i)
     {
-        currentTokenUse += i;
+        currentTokenUse = (currentTokenUse + i > playerStatSO.totalTokens)? currentTokenUse : currentTokenUse + i;
         currentTokenUse = Mathf.Clamp(currentTokenUse, 1, 3);
         playerStatSO.AssumeTokenUse(currentTokenUse);
     }
@@ -20,6 +23,13 @@ public class SO_CurrentToken : ScriptableObject
     public void SetSelectedSlot(int i)
     {
         currentSelectedSlot = i;
+    }
+
+    public void ResetTokenUse()
+    {
+        currentTokenUse = 1;
+        playerStatSO.AssumeTokenUse(currentTokenUse);
+        OnTokenChanged?.Invoke();
     }
 
     private void OnEnable()

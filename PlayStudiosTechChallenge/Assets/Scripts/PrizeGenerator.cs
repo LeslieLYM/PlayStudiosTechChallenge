@@ -14,13 +14,18 @@ public class PrizeGenerator : MonoBehaviour
         prizeListSO.tier2List = new int[prizeListSO.numberOfPrizes];
         prizeListSO.tier3List = new int[prizeListSO.numberOfPrizes];
 
+        GenerateAllPrizes();
+    }
+
+    public void GenerateAllPrizes()
+    {
         for (int i = 0; i < 3; i++)
-        {            
-            GeneratePrizes(i);
+        {
+            GenerateTierPrizes(i);
         }
     }
 
-    private void GeneratePrizes(int tier)
+    private void GenerateTierPrizes(int tier)
     {
         int length = prizeTableSO.GetLength(tier);
         int[] accumulativeFreqs = new int[length];
@@ -59,5 +64,15 @@ public class PrizeGenerator : MonoBehaviour
             }
             prizeListSO.AssignPrizeToList(tier, i, prizeTableSO.GetPrizes(tier)[outIndex]);
         }
+    }
+
+    private void OnEnable()
+    {
+        SummaryCard.OnCardEnded += GenerateAllPrizes;
+    }
+
+    private void OnDisable()
+    {
+        SummaryCard.OnCardEnded -= GenerateAllPrizes;
     }
 }

@@ -5,9 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game Statistic/Player Statistic", fileName = "PlayerStatistic")]
 public class SO_PlayerStat : ScriptableObject
 {
+    [SerializeField] SO_CanvasSequence canvasSequenceSO;
+
     [Header("Setup")]
     public int maxTokens;
-
 
     [Header("Player's info")]
     public int totalPoints;
@@ -18,11 +19,16 @@ public class SO_PlayerStat : ScriptableObject
 
     public delegate void ResourceChangeHandler();
     public static ResourceChangeHandler OnTokenChanged;
+    public static ResourceChangeHandler OnTokenEmptied;
     public static ResourceChangeHandler OnPointsChanged;
 
-    [Space]
-    [Space]
+    [Header("Reset Preset")]
+    [Space(25)]
     [SerializeField] bool reset;
+    [SerializeField] bool resetOnStart;
+    [SerializeField] int resetTokens = 10;
+    [SerializeField] int resetBasePoints = 0;
+    [SerializeField] int resetRoundPoints = 0;
 
     public void StoreNewPoints(int pt)
     {
@@ -40,6 +46,12 @@ public class SO_PlayerStat : ScriptableObject
         totalTokens -= potentialTokens;
         OnTokenChanged?.Invoke();
 
+        if (totalTokens <= 0)
+        {
+            canvasSequenceSO.SceneChange(1);
+            OnTokenEmptied?.Invoke();
+        }
+
         potentialTokens = 0;
     }
 
@@ -53,18 +65,37 @@ public class SO_PlayerStat : ScriptableObject
         return totalTokens >= i;
     }
 
+    public void ResetForNewRound()
+    {
+        totalTokens = resetTokens;
+        roundTotalPoints = 0;
+        potentialTokens = 0;
+        OnTokenChanged?.Invoke();
+        OnPointsChanged?.Invoke();
+    }
 
-
-
+    private void OnEnable()
+    {
+        if (resetOnStart)
+        {
+            ResetStats();
+        }
+        OnTokenChanged?.Invoke();
+    }
 
     private void OnValidate()
     {
         if (reset)
         {
-            roundTotalPoints = 0;
-            totalTokens = 10;
-            potentialTokens = 0;
+            ResetStats();
             reset = false;
         }
+    }
+
+    private void ResetStats()
+    {
+        roundTotalPoints = resetRoundPoints;
+        totalTokens = resetTokens;
+        potentialTokens = 0;
     }
 }

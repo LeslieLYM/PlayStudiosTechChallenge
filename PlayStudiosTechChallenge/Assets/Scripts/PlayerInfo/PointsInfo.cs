@@ -26,6 +26,6 @@ public class PointsInfo : MonoBehaviour
 
     private void Start()
     {
-        pointsText.text = playerStatSO.roundTotalPoints.ToString();
+        UpdatePointsText();
     }
 }
