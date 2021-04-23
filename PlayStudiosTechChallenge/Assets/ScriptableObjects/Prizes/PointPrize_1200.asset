@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d158635cd009594381cda77128ce9a2, type: 3}
-  m_Name: PointPrize
+  m_Name: PointPrize_1200
   m_EditorClassIdentifier: 
-  playerStatSO: {fileID: 0}
-  prizeDisplay: 
-  value: 0
+  playerStatSO: {fileID: 11400000, guid: 6d120f013301907429cb36993df89265, type: 2}
+  prizeDisplay: 1200 pt
+  value: 1200

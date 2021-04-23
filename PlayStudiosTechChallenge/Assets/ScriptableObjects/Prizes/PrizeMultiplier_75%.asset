@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda334cef8a9edd49883a0153a359b73, type: 3}
   m_Name: PrizeMultiplier_75%
   m_EditorClassIdentifier: 
-  playerStatSO: {fileID: 0}
-  prizeDisplay: 
-  value: 0
+  playerStatSO: {fileID: 11400000, guid: 6d120f013301907429cb36993df89265, type: 2}
+  prizeDisplay: 0.75x
+  value: 0.75

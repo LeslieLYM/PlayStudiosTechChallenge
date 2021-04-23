@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1871ab4008c42f4782b547f400ceaec, type: 3}
   m_Name: TokenPrize_3t
   m_EditorClassIdentifier: 
-  playerStatSO: {fileID: 0}
-  prizeDisplay: 
-  value: 0
+  playerStatSO: {fileID: 11400000, guid: 6d120f013301907429cb36993df89265, type: 2}
+  prizeDisplay: Token + 3
+  value: 3

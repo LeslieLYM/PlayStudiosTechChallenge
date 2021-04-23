@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStatSO: {fileID: 11400000, guid: 6d120f013301907429cb36993df89265, type: 2}
   prizeDisplay: 1.5x
-  value: 15
+  value: 1.5
