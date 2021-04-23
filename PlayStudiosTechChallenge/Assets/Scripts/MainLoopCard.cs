@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class MainLoopCard : UICard
 {
+    [SerializeField] SO_AudioProcessor audioUtilitySO;
+
     [SerializeField] Animator animator;
     [SerializeField] AnimationClip tokenInClip;
     [SerializeField] AnimationClip tokenOutClip;
 
     [Space]
-    [SerializeField] CanvasGroup playerInfoCanvasGroup;
+    [SerializeField] AudioSource audioSource;
 
     public delegate void CardChangeHandler();
     public static CardChangeHandler OnCardStart;
 
     public override void StartCardInSequence()
     {
+        audioSource.Play();
         OnCardStart?.Invoke();
     }
 

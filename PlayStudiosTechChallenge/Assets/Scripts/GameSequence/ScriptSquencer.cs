@@ -23,13 +23,11 @@ public class ScriptSquencer : MonoBehaviour
 
     private void OnEnable()
     {
-        //SO_PlayerStat.OnTokenEmptied += ;
         SO_CanvasSequence.OnCanvasChanged += TriggerNextSequence;
     }
 
     private void OnDisable()
     {
-        //SO_PlayerStat.OnTokenEmptied -= EvaluateGameEnd;
         SO_CanvasSequence.OnCanvasChanged -= TriggerNextSequence;
     }
 }

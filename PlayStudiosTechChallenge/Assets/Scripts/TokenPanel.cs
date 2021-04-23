@@ -7,6 +7,7 @@ public class TokenPanel : MonoBehaviour
 {
     [SerializeField] SO_CurrentToken currentToken;
     [SerializeField] TextMeshProUGUI tokenAmountText;
+    [SerializeField] CanvasGroup tokenCG;
 
     public void UpdateTokenText()
     {
@@ -16,6 +17,7 @@ public class TokenPanel : MonoBehaviour
     private void Awake()
     {
         currentToken.tokenPanelGameObject = this.gameObject;
+        tokenCG.blocksRaycasts = false;
         this.gameObject.SetActive(false);
     }
 
