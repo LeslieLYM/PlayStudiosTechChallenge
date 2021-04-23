@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The script manages the beginning scene with transitional assets
+/// </summary>
 public class BeginningCard : UICard
 {
     [SerializeField] SO_CanvasSequence canvasSequenceSO;

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The script manages the summary scene with transitional assets
+/// </summary>
 public class SummaryCard : UICard
 {
     [SerializeField] SO_AudioProcessor audioUtilitySO;

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This scriptable object manages all players' statistics and offers corresponding methods
+/// </summary>
 [CreateAssetMenu(menuName = "Game Statistic/Player Statistic", fileName = "PlayerStatistic")]
 public class SO_PlayerStat : ScriptableObject
 {
@@ -44,6 +47,7 @@ public class SO_PlayerStat : ScriptableObject
         OnRoundPointsChanged?.Invoke();
     }
     
+    //Refund tokens are first stored separately
     public void RefundToken(int i)
     {
         refundTokens += i;
@@ -52,6 +56,7 @@ public class SO_PlayerStat : ScriptableObject
 
     public void UsePicks()
     {
+        //Check if there are weird cases that total tokens are fewer than tokens suggested to be spended
         if (totalTokens < potentialTokens)
         {
             Debug.LogError("Total pick will drop below zero. Current pick use is skipped but check the pick processing method.");
@@ -60,6 +65,7 @@ public class SO_PlayerStat : ScriptableObject
         totalTokens -= potentialTokens;
         OnTokenChanged?.Invoke();
 
+        //Refund the earned tokens back to the total before game end check
         if (refundTokens > 0)
         {
             totalTokens += refundTokens;
@@ -67,6 +73,7 @@ public class SO_PlayerStat : ScriptableObject
             OnTokenChanged?.Invoke();
         }
 
+        //Trigger scene transition to summary scene when all tokens are used
         if (totalTokens <= 0)
         {
             if (refundTokens <= 0)
