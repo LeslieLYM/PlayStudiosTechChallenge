@@ -7,6 +7,8 @@ public class SO_PointPrize : SO_PrizeBase
 {
     public override int ApplyPrizeEffect()
     {
-        return 0;
+        int i = playerStatSO.roundTotalPoints + (int)value;
+        playerStatSO.StoreNewPoints(i);
+        return i;
     }
 }

@@ -6,18 +6,18 @@ using UnityEngine;
 public class SO_PrizeList : ScriptableObject
 {
     public int numberOfPrizes = 1;
-    public int[] tier1List;
-    public int[] tier2List;
-    public int[] tier3List;
+    public SO_PrizeBase[] tier1List;
+    public SO_PrizeBase[] tier2List;
+    public SO_PrizeBase[] tier3List;
 
-    Dictionary<int, int[]> prizeTierPair = new Dictionary<int, int[]>();
+    Dictionary<int, SO_PrizeBase[]> prizeTierPair = new Dictionary<int, SO_PrizeBase[]>();
 
-    public int RequestPrize(int t, int id)
+    public SO_PrizeBase RequestPrize(int t, int id)
     {
         return prizeTierPair[t][id];
     }
 
-    public void AssignPrizeToList(int tier, int i, int prize)
+    public void AssignPrizeToList(int tier, int i, SO_PrizeBase prize)
     {
         prizeTierPair[tier][i] = prize;
 

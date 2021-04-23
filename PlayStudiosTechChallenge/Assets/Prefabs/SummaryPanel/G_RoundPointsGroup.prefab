@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7751080944905543335}
   - component: {fileID: 2181695810547927313}
   m_Layer: 5
-  m_Name: TotalPointsText
+  m_Name: RoundPointsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 7751080945183132546}
   - component: {fileID: 7751080945183132605}
   m_Layer: 5
-  m_Name: G_TotalPointsGroup
+  m_Name: G_RoundPointsGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

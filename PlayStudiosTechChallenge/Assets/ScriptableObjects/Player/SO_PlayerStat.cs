@@ -14,12 +14,14 @@ public class SO_PlayerStat : ScriptableObject
     public int totalPoints;
     public int roundTotalPoints;
     public int totalTokens;
+    public int refundTokens;
 
     int potentialTokens = 0;
 
     public delegate void ResourceChangeHandler();
     public static ResourceChangeHandler OnTokenChanged;
     public static ResourceChangeHandler OnTokenEmptied;
+    public static ResourceChangeHandler OnRoundPointsChanged;
     public static ResourceChangeHandler OnPointsChanged;
 
     [Header("Reset Preset")]
@@ -30,10 +32,22 @@ public class SO_PlayerStat : ScriptableObject
     [SerializeField] int resetBasePoints = 0;
     [SerializeField] int resetRoundPoints = 0;
 
+    public void SecureRoundPoints(int pt)
+    {
+        totalPoints += pt;
+        OnPointsChanged?.Invoke();
+    }
+
     public void StoreNewPoints(int pt)
     {
-        roundTotalPoints += pt;
-        OnPointsChanged?.Invoke();
+        roundTotalPoints = pt;
+        OnRoundPointsChanged?.Invoke();
+    }
+    
+    public void RefundToken(int i)
+    {
+        refundTokens += i;
+        OnTokenChanged?.Invoke();
     }
 
     public void UsePicks()
@@ -46,13 +60,25 @@ public class SO_PlayerStat : ScriptableObject
         totalTokens -= potentialTokens;
         OnTokenChanged?.Invoke();
 
-        if (totalTokens <= 0)
+        if (refundTokens > 0)
         {
-            canvasSequenceSO.SceneChange(1);
-            OnTokenEmptied?.Invoke();
+            totalTokens += refundTokens;
+            refundTokens = 0;
+            OnTokenChanged?.Invoke();
         }
 
-        potentialTokens = 0;
+        if (totalTokens <= 0)
+        {
+            if (refundTokens <= 0)
+            {
+                SecureRoundPoints(roundTotalPoints);
+                canvasSequenceSO.PreSceneChange(1);
+                canvasSequenceSO.SceneChange(1);
+                OnTokenEmptied?.Invoke();
+            }      
+        }
+
+        potentialTokens = 1;
     }
 
     public void AssumeTokenUse(int i)
@@ -71,7 +97,7 @@ public class SO_PlayerStat : ScriptableObject
         roundTotalPoints = 0;
         potentialTokens = 0;
         OnTokenChanged?.Invoke();
-        OnPointsChanged?.Invoke();
+        OnRoundPointsChanged?.Invoke();
     }
 
     private void OnEnable()
@@ -88,6 +114,7 @@ public class SO_PlayerStat : ScriptableObject
         if (reset)
         {
             ResetStats();
+            totalPoints = resetBasePoints;
             reset = false;
         }
     }
@@ -96,6 +123,7 @@ public class SO_PlayerStat : ScriptableObject
     {
         roundTotalPoints = resetRoundPoints;
         totalTokens = resetTokens;
-        potentialTokens = 0;
+        potentialTokens = 1;
+        refundTokens = 0;
     }
 }

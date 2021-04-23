@@ -11,7 +11,12 @@ public class ScriptSquencer : MonoBehaviour
         sequenceCanvas[0].gameObject.SetActive(true);
     }
 
-    public void TriggerNextSequence()
+    void TriggerCurrentOutSequence()
+    {
+        sequenceCanvas[canvasSequenceSO.previousCanvasScene].GetComponent<UICard>().StartCardOutSequence();
+    }
+
+    void TriggerNextSequence()
     {
         GameObject c = sequenceCanvas[canvasSequenceSO.currentCanvasScene].gameObject;
         if (!c.activeSelf)
@@ -23,13 +28,13 @@ public class ScriptSquencer : MonoBehaviour
 
     private void OnEnable()
     {
-        //SO_PlayerStat.OnTokenEmptied += ;
         SO_CanvasSequence.OnCanvasChanged += TriggerNextSequence;
+        SO_CanvasSequence.OnPreCanvasChanged += TriggerCurrentOutSequence;
     }
 
     private void OnDisable()
     {
-        //SO_PlayerStat.OnTokenEmptied -= EvaluateGameEnd;
         SO_CanvasSequence.OnCanvasChanged -= TriggerNextSequence;
+        SO_CanvasSequence.OnPreCanvasChanged -= TriggerCurrentOutSequence;
     }
 }

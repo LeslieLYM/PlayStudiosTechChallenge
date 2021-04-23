@@ -11,17 +11,17 @@ public class RewardInfo : MonoBehaviour
 
     void UpdatePointsText()
     {
-        pointsText.text = playerStatSO.roundTotalPoints.ToString();
+        pointsText.text = "+" + playerStatSO.roundTotalPoints.ToString();
     }
 
     private void OnEnable()
     {
-        SO_PlayerStat.OnPointsChanged += UpdatePointsText;
+        SO_PlayerStat.OnRoundPointsChanged += UpdatePointsText;
     }
 
     private void OnDisable()
     {
-        SO_PlayerStat.OnPointsChanged -= UpdatePointsText;
+        SO_PlayerStat.OnRoundPointsChanged -= UpdatePointsText;
     }
 
     private void Start()

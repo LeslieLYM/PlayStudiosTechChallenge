@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasSequenceSO: {fileID: 11400000, guid: bde64754b12cdf0458af88ea15db47de, type: 2}
   maxTokens: 0
-  totalPoints: 0
+  totalPoints: 4087
   roundTotalPoints: 0
-  totalTokens: 7
+  totalTokens: 4
+  refundTokens: 0
   reset: 0
   resetOnStart: 1
   resetTokens: 7

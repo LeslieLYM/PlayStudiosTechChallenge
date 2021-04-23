@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4400682158130485230}
   - component: {fileID: 2060885125847152326}
-  - component: {fileID: 800373577184673152}
   - component: {fileID: 5921264529978134152}
   - component: {fileID: 4010191032190025400}
+  - component: {fileID: 3501720828382172600}
   m_Layer: 5
   m_Name: U_PointText
   m_TagString: Untagged
@@ -47,20 +47,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028900432025059854}
   m_CullTransparentMesh: 0
---- !u!114 &800373577184673152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028900432025059854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd9de6a1b0abfdf4e85cc80dc074eb01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStatSO: {fileID: 11400000, guid: 6d120f013301907429cb36993df89265, type: 2}
-  pointsText: {fileID: 5921264529978134152}
 --- !u!114 &5921264529978134152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,3 +157,17 @@ MonoBehaviour:
   m_FlexibleWidth: 0.7
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &3501720828382172600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028900432025059854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56178407733483442900f74d2baf3abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStatSO: {fileID: 11400000, guid: 6d120f013301907429cb36993df89265, type: 2}
+  pointsText: {fileID: 5921264529978134152}
