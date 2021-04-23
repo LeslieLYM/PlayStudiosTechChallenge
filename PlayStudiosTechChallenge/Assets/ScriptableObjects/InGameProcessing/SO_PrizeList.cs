@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// SO_PrizeList stores the generated prize data for each round. Dictionary is used to be reference for other scripts
+/// </summary>
 [CreateAssetMenu(menuName = "Game Statistic/Prize List", fileName = "PrizeList")]
 public class SO_PrizeList : ScriptableObject
 {
@@ -21,7 +24,7 @@ public class SO_PrizeList : ScriptableObject
     {
         prizeTierPair[tier][i] = prize;
 
-        //Feedback to inspector
+        //Feedback to inspector only
         switch (tier)
         {
             case 0:

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+/// <summary>
+/// The scriptable object provides some utilities to controlling audio
+/// </summary>
 [CreateAssetMenu(menuName = "Game Utilities/Audio Mixing Utilities", fileName = "AudioUtilities")]
 public class SO_AudioProcessor : ScriptableObject
 {
@@ -29,9 +32,7 @@ public class SO_AudioProcessor : ScriptableObject
 
     public IEnumerator DelayStopSound(AudioSource source, float delay)
     {
-        Debug.Log("Stop delay asdfasdf");
         yield return new WaitForSeconds(delay);
-        Debug.Log("Stop delay");
         source.Stop();
     }
 }

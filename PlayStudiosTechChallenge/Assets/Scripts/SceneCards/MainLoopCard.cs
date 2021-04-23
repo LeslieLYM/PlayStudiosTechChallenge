@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The script manages the main game loop scene with transitional assets
+/// </summary>
 public class MainLoopCard : UICard
 {
     [SerializeField] SO_AudioProcessor audioUtilitySO;

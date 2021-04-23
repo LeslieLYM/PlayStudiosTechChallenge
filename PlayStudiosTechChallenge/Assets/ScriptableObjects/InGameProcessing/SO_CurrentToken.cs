@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// SO_CurrentToken stores the current states of the tokens and selection of slot
+/// </summary>
 [CreateAssetMenu(menuName = "Game Statistic/Current Token Flow", fileName = "CurrentTokenFlow")]
 public class SO_CurrentToken : ScriptableObject
 {

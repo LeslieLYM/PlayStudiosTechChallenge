@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// This script manages the states of a bubble slot and the assets corresponding to the slot.
+/// </summary>
 public class Slot : MonoBehaviour
 {
     [SerializeField] SO_CurrentToken currentToken;
@@ -41,6 +44,7 @@ public class Slot : MonoBehaviour
     bool isHighlighted = false;
     Coroutine clipPlayed;
 
+    //If the slot is still new, it prompts the token panel
     public void AttemptToUseTokens()
     {
         if (!isRevealed)
@@ -51,6 +55,16 @@ public class Slot : MonoBehaviour
         }        
     }
 
+    //Display prize with text. Slot doesn't know what content they hold.
+    public void RevealPrize(string s)
+    {
+        slotContentImage.sprite = openSlotSprite;
+        prizeText.text = s;
+        animator.Play(slotZoomOutClip.name);
+        prizeGameObject.SetActive(true);
+    }
+
+    //Highlight/ Unhighlight is for triggering animation and sounds
     public void HighlightSlot()
     {
         if (!isRevealed)
@@ -70,14 +84,6 @@ public class Slot : MonoBehaviour
             animator.Play(slotZoomOutClip.name);
             animator.SetLayerWeight(1, 0);
         }        
-    }
-
-    public void RevealPrize(string s)
-    {
-        slotContentImage.sprite = openSlotSprite;
-        prizeText.text = s;
-        animator.Play(slotZoomOutClip.name);
-        prizeGameObject.SetActive(true);
     }
 
     public void RegisterAsSelected()

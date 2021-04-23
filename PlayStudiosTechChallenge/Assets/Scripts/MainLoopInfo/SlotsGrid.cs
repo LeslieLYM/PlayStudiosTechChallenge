@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// The scripts manages all the slots, specifically their interactivity & get content for the unlocking slot
+/// </summary>
 public class SlotsGrid : MonoBehaviour
 {
     [SerializeField] SO_PlayerStat playerStatSO;
@@ -46,12 +49,15 @@ public class SlotsGrid : MonoBehaviour
         }
     }
 
+    //Identify the selected slot form Current Token SO and access content from PrizeList SO to reveal the prize
     public void RevealSelectedSlot()
     {
         Slot s = eventTriggers[currentToken.currentSelectedSlot].GetComponentInParent<Slot>();
         SO_PrizeBase p = prizeListSO.RequestPrize(currentToken.currentTokenUse - 1, currentToken.currentSelectedSlot);
         p.ApplyPrizeEffect();
         s.RevealPrize(p.prizeDisplay);
+
+        //Use token(s) afterwards
         playerStatSO.UsePicks();
     }
 
