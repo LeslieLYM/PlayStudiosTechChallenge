@@ -51,7 +51,8 @@ public class SlotsGrid : MonoBehaviour
         Slot s = eventTriggers[currentToken.currentSelectedSlot].GetComponentInParent<Slot>();
         SO_PrizeBase p = prizeListSO.RequestPrize(currentToken.currentTokenUse - 1, currentToken.currentSelectedSlot);
         p.ApplyPrizeEffect();
-        s.RevealPrize(p.prizeDisplay);        
+        s.RevealPrize(p.prizeDisplay);
+        playerStatSO.UsePicks();
     }
 
     private void OnEnable()

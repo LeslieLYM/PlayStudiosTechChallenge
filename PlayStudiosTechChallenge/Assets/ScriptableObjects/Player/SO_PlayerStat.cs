@@ -14,6 +14,7 @@ public class SO_PlayerStat : ScriptableObject
     public int totalPoints;
     public int roundTotalPoints;
     public int totalTokens;
+    public int refundTokens;
 
     int potentialTokens = 0;
 
@@ -41,15 +42,11 @@ public class SO_PlayerStat : ScriptableObject
     {
         roundTotalPoints = pt;
         OnRoundPointsChanged?.Invoke();
-        if (totalTokens <= 0)
-        {
-            SecureRoundPoints(roundTotalPoints);
-        }
     }
     
     public void RefundToken(int i)
     {
-        totalTokens += i;
+        refundTokens += i;
         OnTokenChanged?.Invoke();
     }
 
@@ -63,11 +60,22 @@ public class SO_PlayerStat : ScriptableObject
         totalTokens -= potentialTokens;
         OnTokenChanged?.Invoke();
 
+        if (refundTokens > 0)
+        {
+            totalTokens += refundTokens;
+            refundTokens = 0;
+            OnTokenChanged?.Invoke();
+        }
+
         if (totalTokens <= 0)
         {
-            canvasSequenceSO.PreSceneChange(1);
-            canvasSequenceSO.SceneChange(1);
-            OnTokenEmptied?.Invoke();
+            if (refundTokens <= 0)
+            {
+                SecureRoundPoints(roundTotalPoints);
+                canvasSequenceSO.PreSceneChange(1);
+                canvasSequenceSO.SceneChange(1);
+                OnTokenEmptied?.Invoke();
+            }      
         }
 
         potentialTokens = 1;
@@ -116,5 +124,6 @@ public class SO_PlayerStat : ScriptableObject
         roundTotalPoints = resetRoundPoints;
         totalTokens = resetTokens;
         potentialTokens = 1;
+        refundTokens = 0;
     }
 }
