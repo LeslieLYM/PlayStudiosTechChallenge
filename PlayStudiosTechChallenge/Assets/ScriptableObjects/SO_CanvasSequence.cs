@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This scriptable object is used to store which scene (canvas) is in current and communicate Script Sequencer to trigger transitions 
+/// </summary>
 [CreateAssetMenu(menuName = "Game Statistic/Canvas Sequence Info", fileName = "CanvasSequence")]
 public class SO_CanvasSequence : ScriptableObject
 {

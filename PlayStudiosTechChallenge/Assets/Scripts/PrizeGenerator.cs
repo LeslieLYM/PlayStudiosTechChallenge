@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// The script is responsible for generating the content for the all tiers of the slots for each round. 
+/// </summary>
 public class PrizeGenerator : MonoBehaviour
 {
     [SerializeField] SO_PrizeList prizeListSO;
@@ -25,18 +27,21 @@ public class PrizeGenerator : MonoBehaviour
         }
     }
 
+    //Go through loot table from Prize Table SO to spawn the pattern for each tier to Prize List SO
     private void GenerateTierPrizes(int tier)
     {
         int length = prizeTableSO.GetLength(tier);
         int[] accumulativeFreqs = new int[length];
         int[] freq = prizeTableSO.GetFrequencies(tier);
-        accumulativeFreqs[0] = freq[0];
 
+        //Get the accumulative rate for the prizes first
+        accumulativeFreqs[0] = freq[0];
         for (int i = 1; i < length; i++)
         {
             accumulativeFreqs[i] = accumulativeFreqs[i - 1] + freq[i];
         }
-      
+        
+        //Find the ceiling of the rate of each generated number, it will determine the content
         for (int i = 0; i < prizeListSO.numberOfPrizes; i++)
         {            
             int rand = Random.Range(0, accumulativeFreqs[length - 1]) + 1;

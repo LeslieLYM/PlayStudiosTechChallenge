@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The scriptable object stores the loot table for each tier prizes. Designers can allocate PrizeBase scriptable objects with their spawn rate here.
+/// </summary>
 [CreateAssetMenu(menuName = "Prize Asset/Prize Table", fileName = "PrizeTable")]
 public class SO_PrizeTable : ScriptableObject
 {
@@ -10,10 +13,12 @@ public class SO_PrizeTable : ScriptableObject
     public int[] tier1Frequencies;
 
     [Header("====Tier 2====")]
+    [Space]
     public SO_PrizeBase[] tier2Prizes;
     public int[] tier2Frequencies;
 
     [Header("====Tier 3====")]
+    [Space]
     public SO_PrizeBase[] tier3Prizes;
     public int[] tier3Frequencies;
 
