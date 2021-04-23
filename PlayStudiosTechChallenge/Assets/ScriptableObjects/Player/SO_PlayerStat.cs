@@ -20,6 +20,7 @@ public class SO_PlayerStat : ScriptableObject
     public delegate void ResourceChangeHandler();
     public static ResourceChangeHandler OnTokenChanged;
     public static ResourceChangeHandler OnTokenEmptied;
+    public static ResourceChangeHandler OnRoundPointsChanged;
     public static ResourceChangeHandler OnPointsChanged;
 
     [Header("Reset Preset")]
@@ -30,10 +31,26 @@ public class SO_PlayerStat : ScriptableObject
     [SerializeField] int resetBasePoints = 0;
     [SerializeField] int resetRoundPoints = 0;
 
+    public void SecureRoundPoints(int pt)
+    {
+        totalPoints += pt;
+        OnPointsChanged?.Invoke();
+    }
+
     public void StoreNewPoints(int pt)
     {
-        roundTotalPoints += pt;
-        OnPointsChanged?.Invoke();
+        roundTotalPoints = pt;
+        OnRoundPointsChanged?.Invoke();
+        if (totalTokens <= 0)
+        {
+            SecureRoundPoints(roundTotalPoints);
+        }
+    }
+    
+    public void RefundToken(int i)
+    {
+        totalTokens += i;
+        OnTokenChanged?.Invoke();
     }
 
     public void UsePicks()
@@ -48,11 +65,12 @@ public class SO_PlayerStat : ScriptableObject
 
         if (totalTokens <= 0)
         {
+            canvasSequenceSO.PreSceneChange(1);
             canvasSequenceSO.SceneChange(1);
             OnTokenEmptied?.Invoke();
         }
 
-        potentialTokens = 0;
+        potentialTokens = 1;
     }
 
     public void AssumeTokenUse(int i)
@@ -71,7 +89,7 @@ public class SO_PlayerStat : ScriptableObject
         roundTotalPoints = 0;
         potentialTokens = 0;
         OnTokenChanged?.Invoke();
-        OnPointsChanged?.Invoke();
+        OnRoundPointsChanged?.Invoke();
     }
 
     private void OnEnable()
@@ -88,6 +106,7 @@ public class SO_PlayerStat : ScriptableObject
         if (reset)
         {
             ResetStats();
+            totalPoints = resetBasePoints;
             reset = false;
         }
     }
@@ -96,6 +115,6 @@ public class SO_PlayerStat : ScriptableObject
     {
         roundTotalPoints = resetRoundPoints;
         totalTokens = resetTokens;
-        potentialTokens = 0;
+        potentialTokens = 1;
     }
 }

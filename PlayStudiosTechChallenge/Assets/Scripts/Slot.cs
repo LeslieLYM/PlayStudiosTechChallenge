@@ -72,10 +72,10 @@ public class Slot : MonoBehaviour
         }        
     }
 
-    public void RevealPrize(int i)
+    public void RevealPrize(string s)
     {
         slotContentImage.sprite = openSlotSprite;
-        prizeText.text = i.ToString();
+        prizeText.text = s;
         animator.Play(slotZoomOutClip.name);
         prizeGameObject.SetActive(true);
     }

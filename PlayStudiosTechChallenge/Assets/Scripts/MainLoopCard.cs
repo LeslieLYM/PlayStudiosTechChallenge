@@ -18,13 +18,15 @@ public class MainLoopCard : UICard
 
     public override void StartCardInSequence()
     {
+        StartCoroutine(audioUtilitySO.StartFade("SFXVolume", 1.5f, 1));
         audioSource.Play();
         OnCardStart?.Invoke();
     }
 
     public override void StartCardOutSequence()
     {
-
+        StartCoroutine(audioUtilitySO.StartFade("SFXVolume", 1.5f, -32));
+        StartCoroutine(audioUtilitySO.DelayStopSound(audioSource, 1.5f));
     }
     
     public void ActivateTokenPanel()

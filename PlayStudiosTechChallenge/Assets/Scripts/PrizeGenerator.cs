@@ -10,9 +10,9 @@ public class PrizeGenerator : MonoBehaviour
 
     void Start()
     {
-        prizeListSO.tier1List = new int[prizeListSO.numberOfPrizes];
-        prizeListSO.tier2List = new int[prizeListSO.numberOfPrizes];
-        prizeListSO.tier3List = new int[prizeListSO.numberOfPrizes];
+        prizeListSO.tier1List = new SO_PrizeBase[prizeListSO.numberOfPrizes];
+        prizeListSO.tier2List = new SO_PrizeBase[prizeListSO.numberOfPrizes];
+        prizeListSO.tier3List = new SO_PrizeBase[prizeListSO.numberOfPrizes];
 
         GenerateAllPrizes();
     }

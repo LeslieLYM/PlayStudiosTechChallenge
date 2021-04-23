@@ -6,18 +6,18 @@ using UnityEngine;
 public class SO_PrizeTable : ScriptableObject
 {
     [Header("====Tier 1====")]
-    public int[] tier1Prizes;
+    public SO_PrizeBase[] tier1Prizes;
     public int[] tier1Frequencies;
 
     [Header("====Tier 2====")]
-    public int[] tier2Prizes;
+    public SO_PrizeBase[] tier2Prizes;
     public int[] tier2Frequencies;
 
     [Header("====Tier 3====")]
-    public int[] tier3Prizes;
+    public SO_PrizeBase[] tier3Prizes;
     public int[] tier3Frequencies;
 
-    Dictionary<int, int[]> prizePair = new Dictionary<int, int[]>();
+    Dictionary<int, SO_PrizeBase[]> prizePair = new Dictionary<int, SO_PrizeBase[]>();
     Dictionary<int, int[]> frequencyPair = new Dictionary<int, int[]>();
 
     public int GetLength(int i)
@@ -25,7 +25,7 @@ public class SO_PrizeTable : ScriptableObject
         return prizePair[i].Length;
     }
 
-    public int[] GetPrizes(int tier)
+    public SO_PrizeBase[] GetPrizes(int tier)
     {
         return prizePair[tier];
     }

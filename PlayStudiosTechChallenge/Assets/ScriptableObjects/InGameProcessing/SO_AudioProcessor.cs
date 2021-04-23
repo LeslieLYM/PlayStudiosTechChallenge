@@ -12,7 +12,6 @@ public class SO_AudioProcessor : ScriptableObject
     {        
         float currentVolume;
         audioMixer.GetFloat(param, out currentVolume);
-        Debug.Log("Fade Start " + currentVolume);
         currentVolume = Mathf.Pow(10, currentVolume / 20);
         float clampedVolume = Mathf.Clamp(targetVolume, 0.0001f, 1);
 
@@ -26,5 +25,13 @@ public class SO_AudioProcessor : ScriptableObject
             yield return null;
         }
         yield break;
+    }
+
+    public IEnumerator DelayStopSound(AudioSource source, float delay)
+    {
+        Debug.Log("Stop delay asdfasdf");
+        yield return new WaitForSeconds(delay);
+        Debug.Log("Stop delay");
+        source.Stop();
     }
 }

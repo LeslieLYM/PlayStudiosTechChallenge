@@ -4,7 +4,11 @@ using UnityEngine;
 
 public abstract class SO_PrizeBase : ScriptableObject
 {
-    public int value;
+    [SerializeField] protected SO_PlayerStat playerStatSO;
+
+    [Space]
+    public string prizeDisplay;
+    public float value;
 
     public abstract int ApplyPrizeEffect();
 }

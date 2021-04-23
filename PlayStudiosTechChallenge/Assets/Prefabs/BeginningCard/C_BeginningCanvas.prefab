@@ -1766,7 +1766,7 @@ PrefabInstance:
     - target: {fileID: 4172499211349132205, guid: b7e1dcf050a40d54d8624fb4eb53ee3f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4172499211349132205, guid: b7e1dcf050a40d54d8624fb4eb53ee3f,
         type: 3}
@@ -1777,7 +1777,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8366016239762913236}
+      objectReference: {fileID: 11400000, guid: bde64754b12cdf0458af88ea15db47de,
+        type: 2}
     - target: {fileID: 4172499211349132205, guid: b7e1dcf050a40d54d8624fb4eb53ee3f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1792,7 +1793,7 @@ PrefabInstance:
     - target: {fileID: 4172499211349132205, guid: b7e1dcf050a40d54d8624fb4eb53ee3f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartCardOutSequence
+      value: PreSceneChange
       objectReference: {fileID: 0}
     - target: {fileID: 4172499211349132205, guid: b7e1dcf050a40d54d8624fb4eb53ee3f,
         type: 3}

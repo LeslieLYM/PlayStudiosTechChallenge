@@ -16,9 +16,9 @@ MonoBehaviour:
   maxTokens: 0
   totalPoints: 0
   roundTotalPoints: 0
-  totalTokens: 7
+  totalTokens: 5
   reset: 0
   resetOnStart: 1
-  resetTokens: 7
+  resetTokens: 5
   resetBasePoints: 0
   resetRoundPoints: 0
